@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
 const LocalSession = require('telegraf-session-local');
+const connectToMongo = require('./src/services/db');
 
 const botToken = process.env.TELEGRAM_BOT_TOKEN;
 
@@ -10,7 +11,9 @@ if (!botToken) {
   process.exit(1);
 }
 
+
 const bot = new Telegraf(botToken);
+connectToMongo()
 
 const { Stage } = Scenes;
 
