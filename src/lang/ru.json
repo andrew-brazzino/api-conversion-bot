@@ -7,7 +7,14 @@
         },
 
         "errors" : {
-            "error_protected" : "Доступ запрещен!"
+            "errorProtected" : "Доступ запрещен!",
+            "errorAddedPixel" : "Ошибка добавления пикселя!"
+        },
+
+        "addPixel" : {
+            "sendPixel" : "Отправь id пикселя:",
+            "sendToken" : "Отправь токен:",
+            "saveSuccess" : "Пиксель {pixel}\nС токеном {token}\n\nсохранен!"
         }
 
 

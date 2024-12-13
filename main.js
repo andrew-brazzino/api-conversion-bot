@@ -24,18 +24,18 @@ bot.use(stage.middleware());
 
 
 // Регистрация сцен
-const scenesPath = path.join(__dirname, 'scenes');
+const scenesPath = path.join(__dirname, 'src/scenes');
 fs.readdirSync(scenesPath).forEach(file => {
   if (file.endsWith('.js')) {
-    const scene = require(`./scenes/${file}`);
+    const scene = require(`./src/scenes/${file}`);
     stage.register(scene);
   }
 });
 
 // Регистрация команд
-const commandsFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
+const commandsFiles = fs.readdirSync(path.join(__dirname, 'src/commands')).filter(file => file.endsWith('.js'));
 commandsFiles.forEach(file => {
-  const command = require(`./commands/${file}`);
+  const command = require(`./src//commands/${file}`);
   if (command.middleware) {
     bot.command(command.command, command.middleware, command.action);
   } else {
