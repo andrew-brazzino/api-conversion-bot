@@ -4,6 +4,7 @@ const path = require('path');
 require('dotenv').config();
 const LocalSession = require('telegraf-session-local');
 const connectToMongo = require('./src/services/db');
+const { checkUser } = require('./src/middlewares/isUser')
 
 const botToken = process.env.TELEGRAM_BOT_TOKEN;
 
@@ -16,6 +17,9 @@ const bot = new Telegraf(botToken);
 connectToMongo()
 
 const { Stage } = Scenes;
+
+bot.use(checkUser);
+
 
 // Использование локальной сессии
 const localSession = new LocalSession({ database: 'session_db.json' });
