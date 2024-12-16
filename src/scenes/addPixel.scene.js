@@ -46,7 +46,7 @@ addPixelScene.on('text', async (ctx) => {
                     pixel: ctx.session.pixel,
                     token: ctx.session.token,
                 })
-                await ctx.reply(ruMessage.messages.addPixel.saveSuccess, start())
+                await ctx.reply(ruMessage.messages.addPixel.saveSuccess.replace("{pixel}", ctx.session.pixel).replace("{token}", ctx.session.token), start())
                 ctx.session = {};
                 ctx.scene.leave();
                 break;
