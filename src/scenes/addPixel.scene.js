@@ -3,6 +3,7 @@ const { BaseScene } = Scenes;
 const ruMessage = require('../lang/ru.json');
 const { start } = require('../keyboards/start.keyboard');
 const { back } = require('../keyboards/back.keyboard');
+const PixelService = require('../services/pixel.service');
 
 const addPixelScene = new BaseScene('addPixelScene');
 
@@ -32,7 +33,11 @@ addPixelScene.on('text', async (ctx) => {
                 break;
             case 2:
                 ctx.session.token = ctx.message.text
-                await ctx.reply(ruMessage.messages.addPixel.saveSuccess, back())
+                await PixelService.add({
+                    pixel: ctx.session.pixel,
+                    token: ctx.session.token,
+                })
+                await ctx.reply(ruMessage.messages.addPixel.saveSuccess, start())
                 ctx.session = {};
                 ctx.scene.leave();
                 break;
