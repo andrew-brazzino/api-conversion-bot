@@ -33,6 +33,15 @@ addPixelScene.on('text', async (ctx) => {
                 break;
             case 2:
                 ctx.session.token = ctx.message.text
+
+                const pixel = await PixelService.get(ctx.session.pixel)
+                // Проверяем наличие пикселя и токена
+                if (pixel) {
+                    await ctx.reply(ruMessage.messages.errors.errorNotUniquePixel, start());
+                    ctx.session = {};
+                    ctx.scene.leave();
+                    return;
+                }
                 await PixelService.add({
                     pixel: ctx.session.pixel,
                     token: ctx.session.token,

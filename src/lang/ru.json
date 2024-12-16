@@ -8,7 +8,8 @@
 
         "errors" : {
             "errorProtected" : "Доступ запрещен!",
-            "errorAddedPixel" : "Ошибка добавления пикселя!"
+            "errorAddedPixel" : "Ошибка добавления пикселя!",
+            "errorNotUniquePixel" : "Такой пиксель уже есть в базе данных"
         },
 
         "addPixel" : {
