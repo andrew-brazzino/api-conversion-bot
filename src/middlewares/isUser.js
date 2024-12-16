@@ -4,7 +4,7 @@ const ruMessage = require('../lang/ru.json');
 async function isUser (ctx, next) {
     const tgId = String(ctx.from.id);
     const user = await userService.getByIdTg(tgId);
-
+    console.log(user)
     if (!user) {
         await ctx.reply(ruMessage.messages.errors.errorProtected);
         return; // Останавливаем выполнение следующих middleware
