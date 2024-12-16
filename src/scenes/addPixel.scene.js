@@ -2,7 +2,7 @@ const { Scenes } = require('telegraf');
 const { BaseScene } = Scenes;
 const ruMessage = require('../lang/ru.json');
 const { start } = require('../keyboards/start.keyboard');
-
+const { back } = require('../keyboards/back.keyboard');
 
 const addPixelScene = new BaseScene('addPixelScene');
 

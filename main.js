@@ -50,5 +50,14 @@ commandsFiles.forEach(file => {
   }
 });
 
+// Регистрация хендлеров
+const handlersPath = path.join(__dirname, 'src/handlers');
+fs.readdirSync(handlersPath).forEach(file => {
+  if (file.endsWith('.js')) {
+    const { handler } = require(`./src/handlers/${file}`);
+    handler(bot);
+  }
+});
+
 // Запуск бота
 bot.launch();
