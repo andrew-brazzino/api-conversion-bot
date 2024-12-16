@@ -13,6 +13,8 @@ addPixelScene.enter(async (ctx) => {
 
 addPixelScene.on('text', async (ctx) => {
 
+    const step = ctx.session.step;
+
     const userInput = ctx.message.text;
     // обработка кнопки назад
     if (userInput == ruMessage.keyboards.back[0]) {
