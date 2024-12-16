@@ -32,7 +32,7 @@ addPixelScene.on('text', async (ctx) => {
                 break;
             case 2:
                 ctx.session.token = ctx.message.text
-                await ctx.reply(ruMessage.messages.added_pwa.saveSuccess, back())
+                await ctx.reply(ruMessage.messages.addPixel.saveSuccess, back())
                 ctx.session = {};
                 ctx.scene.leave();
                 break;
