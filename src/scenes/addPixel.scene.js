@@ -19,7 +19,6 @@ addPixelScene.on('text', async (ctx) => {
     const userInput = ctx.message.text;
     // обработка кнопки назад
     if (userInput == ruMessage.keyboards.back[0]) {
-        
         await ctx.scene.enter('backScene')
         ctx.session = {};
         ctx.scene.leave();

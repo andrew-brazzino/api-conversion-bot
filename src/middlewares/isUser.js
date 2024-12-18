@@ -4,6 +4,19 @@ const ruMessage = require('../lang/ru.json');
 async function isUser (ctx, next) {
     const tgId = String(ctx.from.id);
     const user = await userService.getByIdTg(tgId);
+    
+    // Получаем всех пользователей
+    const allUsers = await userService.getAll();
+
+    if (allUsers.length === 0) {
+        // Если пользователей нет, создаем первого
+        await userService.add({
+            tg_id: tgId,
+            role: 'admin', // Первый пользователь назначается админом
+            created_at: new Date()
+        });
+    }
+
     if (!user) {
         await ctx.reply(ruMessage.messages.errors.errorProtected);
         return; // Останавливаем выполнение следующих middleware
