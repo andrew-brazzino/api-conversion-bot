@@ -24,6 +24,18 @@ const UserService = {
         return await User.findOneAndUpdate({ tg_id: tgId }, updateData, { new: true })
     },
 
+    /**
+     * Возвращает всех пользователей.
+     * 
+     * @async
+     * @returns {Promise<User|null>} - Промис, возвращает либо все объекты, либо null.
+     * @example
+     * const users = await userService.getAll();
+     */
+    async getAll() {
+        return await User.find({});
+    },
+
     // удаление пользователя
     async delete(tgId) {
         return await User.findOneAndDelete({ tg_id: tgId })
