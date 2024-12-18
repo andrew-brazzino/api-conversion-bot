@@ -1,5 +1,5 @@
 const ruMessage = require('../lang/ru.json');
-const { start } = require('../keyboards/start.keyboard');
+const { start } = require('../keyboards/admin.keyboard');
 const { isAdmin } = require('../middlewares/isAdmin');
 
 module.exports = {
