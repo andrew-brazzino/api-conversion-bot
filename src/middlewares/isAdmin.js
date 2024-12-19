@@ -10,7 +10,7 @@ async function isAdmin(ctx, next) {
         if (isUserAdmin) {
             await next();
         } else {
-            await ctx.reply(ruMessage.messages.errors.error_protected, start());
+            await ctx.reply(ruMessage.messages.errors.errorProtected, start());
         }
     } catch (error) {
         console.error('Error in isAdmin middleware:', error);
