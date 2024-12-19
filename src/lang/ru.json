@@ -9,13 +9,23 @@
         "errors" : {
             "errorProtected" : "Доступ запрещен!",
             "errorAddedPixel" : "Ошибка добавления пикселя!",
-            "errorNotUniquePixel" : "Такой пиксель уже есть в базе данных"
+            "errorNotUniquePixel" : "Такой пиксель уже есть в базе данных",
+            "errorNotUniqueUser" : "Такой пользователь уже есть в базе данных",
+            "errorAddedUser" : "Ошибка добавления пользователя!"
+
+
         },
 
         "addPixel" : {
             "sendPixel" : "Отправь id пикселя:",
             "sendToken" : "Отправь токен:",
             "saveSuccess" : "Пиксель {pixel}\nС токеном {token}\n\nсохранен!"
+        },
+
+        "addUser" : {
+            "send_id" : "Отправь телеграм id юзера которого хочешь добавить в базу\nЕго можно получить вот здесь: @getmyid_bot",
+            "saveSuccess" : "Пользователь {user} добавлен в бота!"
+
         }
 
 
