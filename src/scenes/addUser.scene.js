@@ -5,7 +5,7 @@ const { start } = require('../keyboards/start.keyboard');
 const { back } = require('../keyboards/back.keyboard');
 const UserService = require('../services/user.service');
 
-const addUserScene = new BaseScene('addUserScene');
+const addUserScene = new BaseScene('addUser');
 
 addUserScene.enter(async (ctx) => {
     await ctx.reply(ruMessage.messages.addUser.send_id, back());
@@ -31,18 +31,16 @@ addUserScene.on('text', async (ctx) => {
             return;
         }
         await UserService.add({
-            user: ctx.session.tg_id,
+            tg_id: ctx.session.tg_id,
             role: "user",
         })
         await ctx.reply(ruMessage.messages.addUser.saveSuccess.replace("{user}", ctx.session.tg_id), start())
-        ctx.session = {};
-        ctx.scene.leave();
     } catch(error){
         console.log(error)
         await ctx.reply(ruMessage.messages.errors.errorAddedUser, start());
-        ctx.session = {};
-        ctx.scene.leave();
     }
+    ctx.session = {};
+    ctx.scene.leave();
 })
 
 
