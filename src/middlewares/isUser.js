@@ -22,6 +22,8 @@ async function isUser (ctx, next) {
         return; // Останавливаем выполнение следующих middleware
     }
 
+     await userService.update(tgId, {username: ctx.from.username})
+
     ctx.state.user = user; // Сохраняем информацию о пользователе в ctx.state
     await next(); // Переход к следующему middleware или обработчику
 };

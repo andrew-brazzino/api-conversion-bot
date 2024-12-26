@@ -6,11 +6,13 @@ const { Schema } = mongoose;
  *
  * @typedef {object} UserSchema
  * @property {string} tg_id - Уникальный идентификатор из телеграма.
+ * @property {string} username -   Юзернейм из телеграма.
  * @property {string} role - Роль в боте.
  */
 const UserSchema = new Schema({
-    tg_id : {type: String, required: true},
-    role : {type: String, required: true}
+    tg_id : { type: String, required: true },
+    username : { type: String },
+    role : { type: String, required: true }
 })
 
 
