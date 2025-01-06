@@ -21,7 +21,7 @@ deleteUserScene.on('text', async (ctx) => {
         return
     }
     try{
-        ctx.session.tg_id = ctx.message.text
+        ctx.session.username = ctx.message.text
         const user = await UserService.delete(ctx.session.tg_id)
         await ctx.reply(ruMessage.messages.addUser.saveSuccess.replace("{user}", ctx.session.tg_id), start())
     } catch(error){
@@ -31,9 +31,6 @@ deleteUserScene.on('text', async (ctx) => {
     ctx.session = {};
     ctx.scene.leave();
 })
-
-
-
 
 
 module.exports = deleteUserScene;
