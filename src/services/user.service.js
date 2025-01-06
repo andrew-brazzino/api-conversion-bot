@@ -50,7 +50,13 @@ const UserService = {
     async isAdmin(tgId) {
         const user = await User.findOne({ tg_id: tgId })
         return user && user.role == 'admin'
-    }
+    },
+
+    async getByIdOrUsername(data) {
+        return await User.findOneAndDelete({
+            $or: [{ tg_id: data }, { username: data }]
+        });
+    },
 
 }
 

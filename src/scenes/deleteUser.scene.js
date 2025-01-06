@@ -8,7 +8,7 @@ const UserService = require('../services/user.service');
 const deleteUserScene = new BaseScene('deleteUser');
 
 deleteUserScene.enter(async (ctx) => {
-    await ctx.reply(ruMessage.messages.addUser.send_id, back());
+    await ctx.reply(ruMessage.messages.deleteUser.send_id, back());
 });
 
 deleteUserScene.on('text', async (ctx) => {
@@ -21,9 +21,15 @@ deleteUserScene.on('text', async (ctx) => {
         return
     }
     try{
-        ctx.session.username = ctx.message.text
-        const user = await UserService.delete(ctx.session.tg_id)
-        await ctx.reply(ruMessage.messages.addUser.saveSuccess.replace("{user}", ctx.session.tg_id), start())
+        ctx.session.data = ctx.message.text
+        const user = await UserService.getByIdOrUsername(ctx.session.data)
+        if(user == null) {
+            await ctx.reply(ruMessage.messages.deleteUser.notFoundUser, start());
+            ctx.session = {};
+            ctx.scene.leave();
+            return
+        }
+        await ctx.reply(ruMessage.messages.deleteUser.saveSuccess.replace("{user}", ctx.session.data), start())
     } catch(error){
         console.log(error)
         await ctx.reply(ruMessage.messages.errors.errorAddedUser, start());
