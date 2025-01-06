@@ -3,7 +3,7 @@ const ruMessage = require('../lang/ru.json');
 
 async function isUser (ctx, next) {
     const tgId = String(ctx.from.id);
-    const user = await userService.getByIdTg(tgId);
+    let user = await userService.getByIdTg(tgId);
     
     // Получаем всех пользователей
     const allUsers = await userService.getAll();
