@@ -12,7 +12,11 @@
             "errorAddedPixel" : "Ошибка добавления пикселя!",
             "errorNotUniquePixel" : "Такой пиксель уже есть в базе данных",
             "errorNotUniqueUser" : "Такой пользователь уже есть в базе данных",
-            "errorAddedUser" : "Ошибка добавления пользователя!"
+            "errorAddedUser" : "Ошибка добавления пользователя!",
+            "errorDeletePixel" : "Ошибка удаления пикселя!",
+            "errorDeleteUser" : "Ошибка удаления пикселя!"
+
+
 
 
         },
@@ -32,8 +36,13 @@
         
         "deleteUser" : {
             "send_id" : "Отправь телеграм id или username(без знака @) юзера которого хочешь \nId можно получить вот здесь: @getmyid_bot",
-            "saveSuccess" : "Пользователь {user} удален из бота!",
+            "deleteSuccess" : "Пользователь {user} удален из бота!",
             "notFoundUser" : "Пользователь не найден, проверь корректность отправленных данных"
+        },
+
+        "deletePixel" : {
+            "sendPixel" : "Отправь id пикселя:",
+            "deleteSuccess" : "Пиксель {pixel} удален!"
         }
 
         

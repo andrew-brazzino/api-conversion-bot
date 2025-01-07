@@ -5,30 +5,30 @@ async function isUser (ctx, next) {
     const tgId = String(ctx.from.id);
     let user = await userService.getByIdTg(tgId);
     
-    // Получаем всех пользователей
+    
     const allUsers = await userService.getAll();
 
     if (allUsers.length === 0) {
-        // Если пользователей нет, создаем первого
+        
         await userService.add({
             tg_id: tgId,
-            role: 'admin', // Первый пользователь назначается админом
+            role: 'admin', 
             created_at: new Date()
         });
     }
 
     if (!user) {
         await ctx.reply(ruMessage.messages.errors.errorProtected);
-        return; // Останавливаем выполнение следующих middleware
+        return;
     }
 
-    // Проверяем и обновляем username, если он есть в ctx.from
+    
     if (ctx.from.username && user.username !== ctx.from.username) {
         user = await userService.update(tgId, { username: ctx.from.username });
     }
 
-    ctx.state.user = user; // Сохраняем информацию о пользователе в ctx.state
-    await next(); // Переход к следующему middleware или обработчику
+    ctx.state.user = user;
+    await next(); 
 };
 
 module.exports = { isUser };
